@@ -1,0 +1,31 @@
+race                                        ours ms  best opponent                opp ms ours/opp  all opponents (ms)
+dbscan/istella                            602959.02  cuml-gpu                   65399.67     9.22  cuml-gpu=65399.67
+dbscan/taxi                              1582292.88  cuml-gpu                  439493.60     3.60  cuml-gpu=439493.60
+hdbscan/istella                             1192.63  cuml-gpu                     825.29     1.45  cuml-gpu=825.29
+hdbscan/taxi                                 423.15  cuml-gpu                     356.23     1.19  cuml-gpu=356.23
+kde/istella                                   34.47  cuml-gpu                       6.45     5.34  cuml-gpu=6.45
+kde/taxi                                       5.98  cuml-gpu                       2.01     2.97  cuml-gpu=2.01
+kmeans/istella                               462.26  cuml-gpu                     463.28     1.00  cuml-gpu=463.28
+kmeans/taxi                                  185.55  cuml-gpu                     376.94     0.49  cuml-gpu=376.94
+knn/istella                                   43.03  cuml-gpu                      71.94     0.60  cuml-gpu=71.94
+knn/taxi                                      24.56  cuml-gpu                      30.77     0.80  cuml-gpu=30.77
+ols/istella                                  503.81  cuml-gpu                     555.84     0.91  cuml-gpu=555.84 gpu=580.59
+ols/taxi                                      16.48  torch-gpu                     39.09     0.42  gpu=39.09 cuml-gpu=51.01
+pca/istella                                  176.09  cuml-gpu                      74.42     2.37  cuml-gpu=74.42
+pca/taxi                                      17.07  cuml-gpu                      19.18     0.89  cuml-gpu=19.18
+svc/istella                                   32.70  cuml-gpu                      23.29     1.40  cuml-gpu=23.29
+svc/taxi                                     760.52  cuml-gpu                     378.22     2.01  cuml-gpu=378.22
+kernel-ridge/istella                         532.73  cuml-gpu                     324.24     1.64  cuml-gpu=324.24
+kernel-ridge/taxi                            533.21  cuml-gpu                     324.37     1.64  cuml-gpu=324.37
+knn-clf/istella                               40.76  cuml-gpu                      39.26     1.04  cuml-gpu=39.26
+knn-clf/taxi                                  14.18  cuml-gpu                      25.39     0.56  cuml-gpu=25.39
+knn-reg/istella                               38.20  cuml-gpu                      36.14     1.06  cuml-gpu=36.14
+knn-reg/taxi                                  11.52  cuml-gpu                       5.17     2.23  cuml-gpu=5.17
+linearsvc/istella                            468.28  cuml-gpu                     269.96     1.73  cuml-gpu=269.96
+linearsvc/taxi                                68.73  cuml-gpu                       8.04     8.55  cuml-gpu=8.04
+linearsvr/istella                            135.21  cuml-gpu                     105.70     1.28  cuml-gpu=105.70
+linearsvr/taxi                                35.08  cuml-gpu                      17.09     2.05  cuml-gpu=17.09
+svr/istella                                   63.87  cuml-gpu                      42.62     1.50  cuml-gpu=42.62
+svr/taxi                                      65.33  cuml-gpu                      44.20     1.48  cuml-gpu=44.20
+tsvd/istella                                  91.55  cuml-gpu                      35.55     2.58  cuml-gpu=35.55
+tsvd/taxi                                      5.51  cuml-gpu                       5.84     0.94  cuml-gpu=5.84

@@ -1,0 +1,27 @@
+race                                        ours ms  best opponent                opp ms ours/opp  all opponents (ms)
+dbscan/istella                                 0.00  -                              0.00     0.00  
+dbscan/taxi                                    0.00  -                              0.00     0.00  
+hdbscan/istella                             1057.39  -                              0.00     0.00  
+hdbscan/taxi                                 347.20  -                              0.00     0.00  
+kde/istella                                   29.64  -                              0.00     0.00  
+kde/taxi                                       3.94  -                              0.00     0.00  
+ols/istella                                  446.26  torch-gpu                   6972.08     0.06  gpu=6972.08
+ols/taxi                                      13.17  torch-gpu                    114.42     0.12  gpu=114.42
+pca/istella                                   87.01  -                              0.00     0.00  
+pca/taxi                                      10.42  -                              0.00     0.00  
+svc/istella                                   42.96  -                              0.00     0.00  
+svc/taxi                                    1052.52  -                              0.00     0.00  
+kernel-ridge/istella                        1651.08  -                              0.00     0.00  
+kernel-ridge/taxi                           1657.94  -                              0.00     0.00  
+knn-clf/istella                               32.43  -                              0.00     0.00  
+knn-clf/taxi                                  11.02  -                              0.00     0.00  
+knn-reg/istella                               31.31  -                              0.00     0.00  
+knn-reg/taxi                                   9.10  -                              0.00     0.00  
+linearsvc/istella                            498.57  -                              0.00     0.00  
+linearsvc/taxi                                69.04  -                              0.00     0.00  
+linearsvr/istella                            104.25  -                              0.00     0.00  
+linearsvr/taxi                                39.26  -                              0.00     0.00  
+svr/istella                                   86.11  -                              0.00     0.00  
+svr/taxi                                     102.57  -                              0.00     0.00  
+tsvd/istella                                  47.56  -                              0.00     0.00  
+tsvd/taxi                                      4.69  -                              0.00     0.00  

@@ -1,0 +1,13 @@
+gbdt-depthwise/istella                      7262.00  xgboost-gpu                 8557.04     0.85  xgboost-gpu=8557.04 catboost-gpu=9600.58
+gbdt-depthwise/taxi                         3714.26  xgboost-gpu                 3038.73     1.22  xgboost-gpu=3038.73 catboost-gpu=6204.85
+gbdt-lossguide/istella                         0.00  -                              0.00     0.00    REFUSED:catboost-gpu
+gbdt-lossguide/taxi                        64300.46  xgboost-gpu                11421.92     5.63  xgboost-gpu=11421.92 catboost-gpu=20453.21
+gbdt-multiclass/istella                    14119.92  catboost-gpu               14623.62     0.97  catboost-gpu=14623.62
+gbdt-multiclass/taxi                        6934.28  catboost-gpu                9880.78     0.70  catboost-gpu=9880.78
+gbdt-rank-pairlogit/istella                 2700.39  catboost-gpu                3521.21     0.77  catboost-gpu=3521.21
+gbdt-symmetric/istella                      9954.36  catboost-gpu                7448.08     1.34  catboost-gpu=7448.08
+gbdt-symmetric/taxi                         6150.76  catboost-gpu                5482.16     1.12  catboost-gpu=5482.16
+iforest/istella                              197.15  cuml-iforest-gpu            2289.68     0.09  cuml-iforest-gpu=2289.68
+iforest/taxi                                 149.06  cuml-iforest-gpu             113.61     1.31  cuml-iforest-gpu=113.61
+rf/istella                                 30768.69  cuml-rf-gpu                23671.70     1.30  cuml-rf-gpu=23671.70
+rf/taxi                                     9442.77  cuml-rf-gpu                20310.38     0.46  cuml-rf-gpu=20310.38

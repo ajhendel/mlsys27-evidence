@@ -1,0 +1,9 @@
+#!/bin/bash
+W=~/anonlib-wt/ag-native-lowering; O=~/anonlib-evidence/autograd-buildout-20261019/compile-52; T=~/CascadeProjects/anonlib/.pixi/envs/test/bin/python; M=~/CascadeProjects/anonlib
+cd $W; export ANONLIB_COMPILE_JOBS=1; : > $O/summary.txt; mkdir -p python/anonlib/identical python/anonlib/host; cp $M/python/anonlib/identical/*.so python/anonlib/identical/ 2>/dev/null; cp $M/python/anonlib/host/*.so python/anonlib/host/ 2>/dev/null
+rm -f python/anonlib/identical/_anonlib_x_sequence.so python/anonlib/host/_anonlib_x_sequence_host.so
+( ANONLIB_NUMERIC_MODE=identical bash ~/anonlib-evidence/compile_slot.sh sh bindings/build_x_sequence.sh > $O/seq.log 2>&1; echo "BUILD seq rc=$?" >> $O/summary.txt ) &
+( ANONLIB_NUMERIC_MODE=identical bash ~/anonlib-evidence/compile_slot.sh sh bindings/build_x_sequence_host.sh > $O/host.log 2>&1; echo "BUILD host rc=$?" >> $O/summary.txt ) & wait
+for v in metal cpu; do env=""; [ $v = cpu ] && env="ANONLIB_VENDOR=cpu"; env PYTHONPATH=$W/python ANONLIB_NUMERIC_MODE=identical ANONLIB_REQUIRE_TORCH=1 $env $T -m pytest -q -s -p no:cacheprovider python/anonlib/tests/test_import_lower_native.py python/anonlib/tests/test_import_lower.py python/anonlib/tests/test_import_onnx_native.py python/anonlib/tests/test_import_torch.py python/anonlib/tests/test_import_onnx.py python/anonlib/tests/test_autograd_public.py python/anonlib/tests/test_verify_model.py python/anonlib/tests/test_ops_program.py > $O/pytest-$v.log 2>&1; echo "PYTEST $v rc=$? $(tail -n 1 $O/pytest-$v.log | cut -c1-60)" >> $O/summary.txt; done
+grep -hoE "[A-Z_0-9]+_DIGEST [a-zA-Z_0-9/.-]+ [0-9a-f]+|LOWER_PARITY [^ ]+ [^ ]+" $O/pytest-metal.log | sort > $O/d-m.txt; grep -hoE "[A-Z_0-9]+_DIGEST [a-zA-Z_0-9/.-]+ [0-9a-f]+|LOWER_PARITY [^ ]+ [^ ]+" $O/pytest-cpu.log | sort > $O/d-c.txt; echo "DIGESTS metal-vs-cpu $(diff -q $O/d-m.txt $O/d-c.txt > /dev/null && echo EQUAL || echo DIFFER) n=$(wc -l < $O/d-m.txt)" >> $O/summary.txt
+echo DONE >> $O/summary.txt

@@ -1,0 +1,63 @@
+{
+ "status": "QUALIFIED_BOUNDED_CAPTURE",
+ "provenance": {
+  "source_revision": "e9f784d1a1c2d923af77bbd8a799090fb24c1c85",
+  "source_repo": "/home/user/CascadeProjects/anonlib",
+  "source_file": "bench/results/resume/2026-09-06-root-byte-lm-cross-vendor/nv-to-amd-resume128-comparison.json",
+  "source_sha256": "da61bddd4c9e49f5be10678939ec2db8c78506e47b4fb5f43e620d56842df125",
+  "reverse_source_file": "bench/results/resume/2026-09-06-root-byte-lm-cross-vendor/amd-to-nv-resume128-comparison.json",
+  "reverse_source_sha256": "b1cad765638b7e6a3477d600c1ce389e93377758d72056369e8aa58ddae83d39",
+  "date": "2026-09-06",
+  "numerical_source_revision": "d921eade0da5454e39e0cd103b9a1799286b41b9",
+  "note": "Transcribed from root's two completed all-raw comparison records and adjacent README; no new execution by the paper editor. Transport snapshot d5893e2a does not change the retained numerical inventory. The subsequent working-tree immutable-bytes loader is outside this result."
+ },
+ "profile": "anonlib.byte-lm.b2-l32-d32-h4-kv2-ff64-v256-blocks2.fp32.v1",
+ "parameters": 34944,
+ "blocks": 2,
+ "steps": 128,
+ "checkpoint_step": 64,
+ "vendors": [
+  "NVIDIA CUDA",
+  "AMD HIP"
+ ],
+ "qualified_resume_directions": [
+  "NVIDIA to AMD",
+  "AMD to NVIDIA"
+ ],
+ "direction_status": {
+  "NVIDIA to AMD": {
+   "status": "QUALIFIED_BOUNDED_CAPTURE",
+   "identity_admitted": true,
+   "learning_admitted": true,
+   "effective_control": true,
+   "prerequisites_missing": []
+  },
+  "AMD to NVIDIA": {
+   "status": "QUALIFIED_BOUNDED_CAPTURE",
+   "identity_admitted": true,
+   "learning_admitted": true,
+   "effective_control": true,
+   "prerequisites_missing": []
+  }
+ },
+ "identity_admitted": true,
+ "learning_admitted": true,
+ "heldout_loss_initial": 5.5412986278533936,
+ "heldout_loss_final": 2.8436418771743774,
+ "predeclared_max_loss_ratio": 0.9,
+ "corpus_sha256": "86c4e6aa9db7c042ec79f339dcb96d42b0075e16b8fc2e86bf0ca57e2dc565ed",
+ "transferred_checkpoint_sha256": "264f189179b5a3b8a3cbbceb0f54209fb657ff7dacf701b4f8a760c693da8ff0",
+ "evidence": [
+  "Every retained raw step array agrees between the independent continuous 128-step runs, including parameters, gradients, AdamW moments, flags, counters and losses.",
+  "Actual step-64 checkpoint bytes were transferred and loaded in both directions, NVIDIA to AMD and AMD to NVIDIA; each continuation through step 128 matches uninterrupted training and final checkpoint bytes.",
+  "Held-out token and loss bytes match. Both vendors have independently guarded first-step FP64 gradient and AdamW oracles.",
+  "In each direction the effective missing-moments control preserves step-65 loss, gradients and tokens but changes post-update parameters and both moments.",
+  "Required successful root job receipts bind commands, guard logs and results; no prerequisites are missing."
+ ],
+ "scope": "Only this fixed FP32 byte-level model, pinned text and retained trajectories. Both NVIDIA-to-AMD and AMD-to-NVIDIA continuation are admitted; Metal is not admitted here. No generation-quality, speed, general-architecture or universal identity claim. Separate from the historical 13,376-parameter three-vendor fixture and all three-vendor matrix counts.",
+ "devices": {
+  "NVIDIA": "RTX 4090 (sm_89)",
+  "AMD": "MI300X (gfx942)",
+  "source": "bench/results/resume/2026-09-06-root-byte-lm-nvidia/README.md and 2026-09-06-root-byte-lm-amd/README.md"
+ }
+}

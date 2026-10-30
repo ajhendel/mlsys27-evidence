@@ -1,0 +1,20 @@
+race                                        ours ms  best opponent                opp ms ours/opp  all opponents (ms)
+gemm-bf16/gaussian                            65.95  torch-eager-bf16              39.71     1.66  eager-bf16=39.71 compile-bf16=40.40
+gemm-int8/gaussian                            43.75  torch-eager-int8              37.75     1.16  eager-int8=37.75 compile-int8=38.70
+gemm/gaussian                                 45.98  torch-compile-bf16            34.03     1.35  compile-bf16=34.03 eager-bf16=34.36 eager-tf32=35.00 compile-tf32=35.63 eager-fp32=36.40 compile-fp32=39.04
+lm-forward/bytes                              44.89  torch-compile-bf16            31.06     1.45  compile-bf16=31.06 graph-tf32=31.56 graph-fp32=32.60 eager-tf32=34.01 compile-tf32=34.04 eager-bf16=34.23 compile-fp32=35.59 eager-fp32=36.7
+lm-train-step/bytes                           35.50  torch-compile-bf16            10.83     3.28  compile-bf16=10.83 compile-tf32=18.39 eager-tf32=19.40 eager-fp32=22.34 eager-bf16=22.51 compile-fp32=24.16
+mamba1-forward/gaussian                        3.43  mamba-ssm-tf32                 3.20     1.07  mamba-ssm-tf32=3.20 mamba-ssm-fp32=3.31
+mamba2-forward/gaussian                        5.57  mamba-ssm-tf32                 2.81     1.98  mamba-ssm-tf32=2.81 mamba-ssm-fp32=3.28
+mamba3-decode/gaussian                      1815.16  -                              0.00     0.00  
+mamba3-forward/gaussian                        3.95  mamba-ssm-tf32                 3.07     1.29  mamba-ssm-tf32=3.07 mamba-ssm-fp32=3.23
+mlp-train-step/gaussian                        1.90  torch-eager-tf32               1.68     1.13  eager-tf32=1.68 eager-bf16=1.80 eager-fp32=1.83 compile-bf16=1.88 compile-fp32=2.09 compile-tf32=2.10
+ops-session-step/gaussian                      2.30  torch-eager-tf32               2.10     1.09  eager-tf32=2.10 eager-bf16=2.44 eager-fp32=2.61 compile-fp32=2.63 compile-tf32=2.74 compile-bf16=2.75
+program-run/gaussian                           1.04  torch-eager-tf32               0.58     1.79  eager-tf32=0.58 eager-fp32=0.66 eager-bf16=0.69 compile-bf16=1.22 compile-tf32=1.32 compile-fp32=1.41
+samba-decode/bytes                          2517.33  -                              0.00     0.00  
+samba-forward/bytes                            4.60  torch-graph-tf32               1.38     3.34  graph-tf32=1.38 graph-fp32=1.72 eager-fp32=3.98 eager-bf16=4.33 eager-tf32=4.89
+samba-train-step/bytes                        45.72  torch-eager-tf32              11.78     3.88  eager-tf32=11.78 eager-fp32=14.08 eager-bf16=19.31
+sequential-fit/synthetic                     271.44  torch-compile-fp32          1986.40     0.14  compile-fp32=1986.40 eager-fp32=2131.42 compile-bf16=2250.20 compile-tf32=2286.99 eager-tf32=2326.18 eager-bf16=3077.32
+sequential-predict/synthetic                   4.27  torch-eager-tf32               1.38     3.09  eager-tf32=1.38 eager-bf16=1.49 compile-fp32=1.61 eager-fp32=1.76 compile-bf16=1.94 compile-tf32=2.65
+transformer-decode/gaussian                 1104.95  torch-graph-fp32             326.48     3.38  graph-fp32=326.48 graph-tf32=329.06 eager-tf32=725.29 eager-fp32=749.77 eager-bf16=861.76
+transformer-forward/gaussian                   5.57  torch-graph-fp32               2.36     2.36  graph-fp32=2.36 compile-bf16=2.37 compile-tf32=2.59 eager-fp32=2.67 compile-fp32=2.68 graph-tf32=3.31 eager-tf32=3.31 eager-bf16=3.66

@@ -1,0 +1,37 @@
+{
+  "schema": "anonlib.byte-lm.continuous-admission.v1",
+  "status": "QUALIFIED_BOUNDED_CONTINUOUS",
+  "identity_admitted": true,
+  "learning_admitted": true,
+  "metal_admitted": true,
+  "resume_admitted": false,
+  "continuous_vendors": [
+    "cuda",
+    "hip",
+    "metal"
+  ],
+  "compared_steps": 128,
+  "source_files": 258,
+  "checkpoint_sha256": "a9858cd59b424b77b897d0171d5f225d63f3f161fcdee02049bd6c04cfd8a6dc",
+  "initial_heldout_loss": 5.5412986278533936,
+  "final_heldout_loss": 2.8436418771743774,
+  "summary_sha256": {
+    "cuda": "ae4d89362cee5262b64e441c6b32756ace76679e14528905793c5a765e514446",
+    "hip": "0ddbec01a2a066d0cbb832119fd6a6df8ebbe809e7a586a8c2f3686028880ad3",
+    "metal": "2e1412f26d49ea068a11f6129611d06c8cfdab277a3c0e6eeb65e735881ae3e2"
+  },
+  "scope": "All128 continuous FP32 training states, inputs, heldout bytes and final checkpoint match across three vendors for this fixed two-block 34944-parameter model. No Metal resume, independent Metal FP64 oracle, larger-model or benchmark claim. Metal used the explicitly user-authorized no-free-reserve guard policy; other recorded limits remained active.",
+  "provenance": {
+    "source_revision": "e9f784d1a1c2d923af77bbd8a799090fb24c1c85",
+    "source_repo": "/home/user/CascadeProjects/anonlib",
+    "source_file": "bench/results/resume/2026-09-07-root-byte-lm-three-vendor/comparison.json",
+    "source_sha256": "eb5f8514d76153dc89e62dd6de2eaa3a382cf8afb2d9b7eeb8f5ae4e4e8e6641",
+    "harness": "bench/results/resume/2026-09-07-root-byte-lm-three-vendor/root_compare.py",
+    "verification": "Reexecuted retained comparator over raw captures, source inventories, receipts and CUDA/HIP oracle admissions; comparison and admission assertions pass. No model execution."
+  },
+  "devices": {
+    "Apple": "M4 (Metal)",
+    "NVIDIA": "RTX 4090",
+    "AMD": "DigitalOcean MI325X VF"
+  }
+}

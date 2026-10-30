@@ -1,0 +1,73 @@
+# python -m anonlib verify --compare
+
+                         all-armcpu.json                    shard7.json
+  version                0.8.55                             0.8.55
+  commit                 a8255828597a3bd19ac7bb5f657a38d09b a8255828597a3bd19ac7bb5f657a38d09b
+  vendor                 cpu                                cpu
+  class                  cpu                                cpu
+  device                 Apple M4 / Mac16,12                Linux x86_64 (no vendor tool answe   <- differs
+  cpu                    Apple M4                           DO-Premium-AMD   <- differs
+  python                 3.12.11                            3.10.12   <- differs
+  bindings hashed        42                                 42
+  its own verdict        INCOMPLETE                         VERIFIED
+    all-armcpu.json: verified 11375 of 31706 cell parts (0 divergent, 0 owed, 81 refused, 20250 n/a); 389 verified, 57 not applicable, 2 owed, 0 held, 1 REFUSED, of 449 lanes
+    shard7.json: verified 2006 of 5381 cell parts (0 divergent, 0 owed, 0 refused, 3375 n/a); 65 verified, 0 not applicable, 0 owed, 0 held, of 65 lanes
+
+NOTE: these documents share a device class. Agreement is weaker evidence
+than two genuinely different vendors would give.
+
+COMMITMENTS: none were exchanged. Nothing here shows that either document's
+numbers were COMPUTED by the machine it names. Whichever party received the
+other's file first could have pasted its cell values into a document
+carrying their own provenance, and this command cannot tell that apart from
+two honest runs. This result is WEAKER for the same reason two documents
+from one device are weaker than two vendors.
+To close it, before either party sees the other's file:
+  python -m anonlib verify --commitment mine.json     # publish the line it prints
+then exchange documents and add
+  --commitment-a <all-armcpu.json's published line> --commitment-b <shard7.json's>
+
+CHALLENGE: none. Neither document answers a challenge, so nothing here shows
+that either party RAN anything. The reference table ships in the wheel and
+pins the expected hash of every cell, so a well formed document can be
+written straight out of it and committed to without executing a line; a
+commitment settles the ORDER of the two files, never their execution. This
+result is WEAKER for the same reason a comparison without commitments is.
+To close it, after publishing commitments and exchanging the two lines:
+  python -m anonlib verify --challenge mine.json \
+      --challenge-from <your line> <their line>   # publish the second line
+then exchange documents and add
+  --challenge-commitment-a <all-armcpu.json's second line> --challenge-commitment-b <shard7.json's>
+
+  agree 2006   differ 0   self-contradicted 0   neither computed 0   agreed on a divergence 0
+  n/a agreed 3375   n/a differing 0   only in all-armcpu.json: 26325   only in shard7.json: 0
+  incompatible inputs/protocols 0
+
+ONLY IN all-armcpu.json (26325), not comparable:
+  agglomerative/base batch
+  agglomerative/base batchgrad
+  agglomerative/base batchscale
+  agglomerative/base infer
+  agglomerative/base model
+  agglomerative/base ragged
+  agglomerative/base rlpair
+  agglomerative/base stepfull
+  agglomerative/base train
+  agglomerative/denormal batch
+  agglomerative/denormal batchgrad
+  agglomerative/denormal batchscale
+  agglomerative/denormal infer
+  agglomerative/denormal model
+  agglomerative/denormal ragged
+  agglomerative/denormal rlpair
+  agglomerative/denormal stepfull
+  agglomerative/denormal train
+  agglomerative/denormal_ftz batch
+  agglomerative/denormal_ftz batchgrad
+  ... and 26305 more
+
+RESULT: INCOMPLETE. 2006 shared cell parts match; coverage is partial.
+0 cell parts have incompatible inputs or protocols.
+No cell differs, but 26325 cell part(s) appear in only one document, 0
+were computed by neither side, and 0 carry different n/a reasons, so the two
+runs did not cover the same ground.

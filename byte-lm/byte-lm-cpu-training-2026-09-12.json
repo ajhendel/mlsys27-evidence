@@ -1,0 +1,189 @@
+{
+ "status": "QUALIFIED_CPU_TRAINING",
+ "provenance": {
+  "source_repo": "/home/user/CascadeProjects/anonlib",
+  "source_file": "docs/BYTE_LM_CPU_TRAINING.md",
+  "source_revision": "d230895ef4187ba9d94a629a07a3324b40905110",
+  "source_sha256": "20204798d17492a742291822d6291819aaf471df16332f3f268949c8e09c9abc",
+  "date": "2026-09-12",
+  "note": "Two transcriptions, both from per-runner reports rather than from a job badge or a summary line. The two-row figures come from the seven reports of workflow run 34701581834 at anonlib commit 07ff43dd3cb4946ad1b68cd36c72a3af0269806a, retained under bench/results/gh-actions/2026-09-12_1513-byte-lm-cpu-gate-run34701581834. The four-row figures in second_shape come from the seven reports of run 34710164905 at commit 8d5571889c1cbf6b2c62b0e0b01b3e4b09e5e6a9, reading each cpu_train_b4l32.json and cpu_train_b4l32_sab.json, with the held-out numbers taken from the capture's own summary.json. The pinned revision was advanced when the source document was rewritten to carry the four-row result, because a digest that predates the numbers it is meant to support verifies while pointing at the wrong text."
+ },
+ "profile": "anonlib.byte-lm.b2-l32-d32-h4-kv2-ff64-v256-blocks2.fp32.v1",
+ "parameters": 34944,
+ "capture": "bench/results/resume/2026-09-07-root-byte-lm-three-vendor (Apple Metal tree; the CUDA and HIP trees match it byte for byte)",
+ "gate": "tools/byte_lm_cpu_train_gate.py",
+ "gate_sha256": "9767d5497ee37fd3e5b66a6b67f9cb90666ac601a618cda9b04d5a171ff43d67",
+ "run": "github-actions 34701581834",
+ "run_commit": "07ff43dd3cb4946ad1b68cd36c72a3af0269806a",
+ "steps": 128,
+ "arrays_per_step": 5,
+ "arrays": ["grad", "loss", "post_p", "post_m", "post_v"],
+ "compared_per_cpu": 640,
+ "mismatched_per_cpu": 0,
+ "control": {
+  "build": "-D ANONLIB_GEMM_SABOTAGE_BWD_UNTRANSPOSED=1",
+  "steps": [1, 64],
+  "compared": 10,
+  "mismatched": 8,
+  "equal": 2,
+  "equal_arrays": ["loss", "loss"],
+  "localized_tensor": "block0.w_q",
+  "localized_index_in_tensor": 0,
+  "note": "A backward-only corruption leaves the forward exact, so the two equal arrays are the losses and the other eight follow the gradient into both moments and the updated parameters."
+ },
+ "vendor_agreement": {
+  "vendors": ["apple", "cuda", "hip"],
+  "steps": 128,
+  "arrays_per_step": 11,
+  "compared": 4224,
+  "mismatched": 0,
+  "digests_verified": 4224,
+  "report": "bench/results/gh-actions/2026-09-12_1513-byte-lm-cpu-gate-run34701581834/local-three-vendor-train-capture.json",
+  "note": "Byte equality among the three recorded vendor trees is re-derived from the raw arrays rather than taken from a flag, so a CPU step equal to the Apple bytes is equal to all three."
+ },
+ "seconds_per_step": {
+  "linux_min": 0.0235,
+  "linux_max": 0.0387,
+  "apple_m1": 0.0689
+ },
+ "cpus": [
+  {
+   "name": "AMD EPYC 9V45 (Zen 5)",
+   "host": "GitHub",
+   "machine": "x86_64",
+   "job": "byte-lm-cpu-gate-x86-a",
+   "compared": 640,
+   "mismatched": 0,
+   "control_mismatched": 8,
+   "seconds_per_step": 0.0371,
+   "report": "bench/results/gh-actions/2026-09-12_1513-byte-lm-cpu-gate-run34701581834/byte-lm-cpu-gate-x86-a/cpu_train.json",
+   "control_report": "bench/results/gh-actions/2026-09-12_1513-byte-lm-cpu-gate-run34701581834/byte-lm-cpu-gate-x86-a/cpu_train_sab.json"
+  },
+  {
+   "name": "x86-64 Linux draw B",
+   "host": "GitHub",
+   "machine": "x86_64",
+   "job": "byte-lm-cpu-gate-x86-b",
+   "compared": 640,
+   "mismatched": 0,
+   "control_mismatched": 8,
+   "seconds_per_step": 0.0367,
+   "report": "bench/results/gh-actions/2026-09-12_1513-byte-lm-cpu-gate-run34701581834/byte-lm-cpu-gate-x86-b/cpu_train.json",
+   "control_report": "bench/results/gh-actions/2026-09-12_1513-byte-lm-cpu-gate-run34701581834/byte-lm-cpu-gate-x86-b/cpu_train_sab.json"
+  },
+  {
+   "name": "x86-64 Linux draw C",
+   "host": "GitHub",
+   "machine": "x86_64",
+   "job": "byte-lm-cpu-gate-x86-c",
+   "compared": 640,
+   "mismatched": 0,
+   "control_mismatched": 8,
+   "seconds_per_step": 0.0251,
+   "report": "bench/results/gh-actions/2026-09-12_1513-byte-lm-cpu-gate-run34701581834/byte-lm-cpu-gate-x86-c/cpu_train.json",
+   "control_report": "bench/results/gh-actions/2026-09-12_1513-byte-lm-cpu-gate-run34701581834/byte-lm-cpu-gate-x86-c/cpu_train_sab.json"
+  },
+  {
+   "name": "x86-64 Linux draw D",
+   "host": "GitHub",
+   "machine": "x86_64",
+   "job": "byte-lm-cpu-gate-x86-d",
+   "compared": 640,
+   "mismatched": 0,
+   "control_mismatched": 8,
+   "seconds_per_step": 0.0372,
+   "report": "bench/results/gh-actions/2026-09-12_1513-byte-lm-cpu-gate-run34701581834/byte-lm-cpu-gate-x86-d/cpu_train.json",
+   "control_report": "bench/results/gh-actions/2026-09-12_1513-byte-lm-cpu-gate-run34701581834/byte-lm-cpu-gate-x86-d/cpu_train_sab.json"
+  },
+  {
+   "name": "x86-64 Linux draw E",
+   "host": "GitHub",
+   "machine": "x86_64",
+   "job": "byte-lm-cpu-gate-x86-e",
+   "compared": 640,
+   "mismatched": 0,
+   "control_mismatched": 8,
+   "seconds_per_step": 0.0235,
+   "report": "bench/results/gh-actions/2026-09-12_1513-byte-lm-cpu-gate-run34701581834/byte-lm-cpu-gate-x86-e/cpu_train.json",
+   "control_report": "bench/results/gh-actions/2026-09-12_1513-byte-lm-cpu-gate-run34701581834/byte-lm-cpu-gate-x86-e/cpu_train_sab.json"
+  },
+  {
+   "name": "Arm Neoverse N2 (Cobalt 100)",
+   "host": "GitHub",
+   "machine": "aarch64",
+   "job": "byte-lm-cpu-gate-arm64",
+   "compared": 640,
+   "mismatched": 0,
+   "control_mismatched": 8,
+   "seconds_per_step": 0.0387,
+   "report": "bench/results/gh-actions/2026-09-12_1513-byte-lm-cpu-gate-run34701581834/byte-lm-cpu-gate-arm64/cpu_train.json",
+   "control_report": "bench/results/gh-actions/2026-09-12_1513-byte-lm-cpu-gate-run34701581834/byte-lm-cpu-gate-arm64/cpu_train_sab.json"
+  },
+  {
+   "name": "Apple M1 (virtualized)",
+   "host": "GitHub",
+   "machine": "arm64",
+   "job": "byte-lm-cpu-gate-macos15",
+   "compared": 640,
+   "mismatched": 0,
+   "control_mismatched": 8,
+   "seconds_per_step": 0.0689,
+   "report": "bench/results/gh-actions/2026-09-12_1513-byte-lm-cpu-gate-run34701581834/byte-lm-cpu-gate-macos15/cpu_train.json",
+   "control_report": "bench/results/gh-actions/2026-09-12_1513-byte-lm-cpu-gate-run34701581834/byte-lm-cpu-gate-macos15/cpu_train_sab.json"
+  }
+ ],
+ "second_shape": {
+  "profile": "anonlib.byte-lm.b4-l32-d32-h4-kv2-hd8-ff64-v256-blocks2.fp32.v2",
+  "batch": 4,
+  "length": 32,
+  "tokens_per_step": 128,
+  "note": "A SEPARATE CERTIFICATE, not a widening of the first. Nine weight gradients contract over the token count, so 128 tokens in a step is a different sum from 64 and not two of them accumulated.",
+  "capture": "bench/results/resume/2026-09-12-root-byte-lm-b4l32-nvidia/run1/remote/byte-lm-validation/full128-b4-l32",
+  "vendors": ["cuda"],
+  "device": "NVIDIA L40S",
+  "capture_commit": "9b34a2cdb8de7a1e389039b883dd7d4b9b9c9dda",
+  "run": "github-actions 34710164905",
+  "run_commit": "8d5571889c1cbf6b2c62b0e0b01b3e4b09e5e6a9",
+  "steps": 128,
+  "cpus": 7,
+  "compared_per_cpu": 640,
+  "mismatched_per_cpu": 0,
+  "compared_total": 4480,
+  "mismatched_total": 0,
+  "control": {
+   "build": "-D ANONLIB_GEMM_SABOTAGE_BWD_UNTRANSPOSED=1",
+   "compared": 10,
+   "mismatched": 8,
+   "equal": 2,
+   "wrong_arrays": ["grad", "post_m", "post_p", "post_v"],
+   "note": "The two equal are the losses, which is the signature a backward-only corruption must have."
+  },
+  "heldout": {
+   "initial_mean_loss": 5.541299223899841,
+   "final_mean_loss": 2.747130572795868,
+   "ratio": 0.49575568143791726,
+   "threshold": 0.9,
+   "batches": 4,
+   "rows_per_batch": 4,
+   "targets": 512
+  },
+  "seconds_per_step": {
+   "linux_min": 0.0445,
+   "linux_max": 0.0725,
+   "apple_m1": 0.1062
+  },
+  "scope": "ONE VENDOR. The capture is CUDA on an NVIDIA L40S, so a pass is a CPU against CUDA statement at this shape. No AMD or Apple capture exists at four rows, so nothing cross-vendor is claimed here, which is the difference from the two-row result where three retained vendor trees agree and byte equality is transitive.",
+  "not_admitted": [
+   "Cross-vendor identity at this shape, since only one vendor captured it",
+   "The single-vendor learning admission, because this tree was captured before python/anonlib/_byte_lm_config.py entered the capture source inventory and so names a source the capture does not carry"
+  ]
+ },
+ "vendor_summary": "AMD, Arm, Apple and further x86-64 draws",
+ "scope": "Forward pass, backward pass and the AdamW update of one fixed FP32 byte-level model at one batch shape, on CPUs with no GPU, replayed step by step from each recorded step's own parameters, moments, token ids and optimizer configuration. Each CPU compiles its own binding. Single-threaded reference path. The x86-64 rows are GitHub Actions virtual machines whose CPU the provider assigns; only the Zen 5 draw reported a model string that its own report recorded. Not added to any GPU certificate total.",
+ "not_admitted": [
+  "Batch shapes and microbatch schedules beyond the two captured. Nine of the weight gradients contract over the token count, so identity is claimed per shape and two shapes are held rather than a range covered",
+  "A threaded CPU training path; the threaded CPU result covers inference only",
+  "Other algorithm families; trees and the classical models have no backward pass and remain GPU-only",
+  "Training from scratch on a CPU as a workflow claim; what is measured is step-for-step reproduction of recorded GPU training"
+ ]
+}

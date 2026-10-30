@@ -1,0 +1,8 @@
+{
+  "source_repository": "https://github.com/anon/anon",
+  "source_revision": "e1d6c8a3dd2359cbdb4bc05abe2b3ed94d1d3452",
+  "source_path": "bench/results/model_portability/2026-10-20",
+  "manifest_sha256": "41f2e79dc8fe6921ba4d02d2dda8bddf4b9d00dacb059bafc9a50c1af43c7eeb",
+  "checker_sha256": "caf9a55b8391501eddb952d214a86d05995f7ad314bb8c3d3565e67ae8d448cc",
+  "scope": "Explicitly imported correctness evidence; existing measurement-sources.json and performance tables remain pinned."
+}

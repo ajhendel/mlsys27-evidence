@@ -1,0 +1,4 @@
+bench_board: AMD ROCm LightGBM does not import (see /root/anonlib/box-out/v0855-rocm7lossguide/board/logs/setup.log; libomp shim /root/nb-cache/venv/rocm-libomp); the lightgbm arms will refuse by name
+bench_board: [1/1] trees/gbdt-lossguide/taxi/rows=full arms=ours,ours-gain0,xgboost-gpu,lightgbm-cuda
+bench_board:   done rc=0 158s
+bench_board: stopped after retaining local evidence: incomplete worker evidence; local results retained, no further races permitted

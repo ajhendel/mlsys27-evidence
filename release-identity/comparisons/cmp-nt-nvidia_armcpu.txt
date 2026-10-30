@@ -1,0 +1,88 @@
+# python -m anonlib verify --compare
+
+                         nt-nvidia.json                     nt-armcpu.json
+  version                0.8.55                             0.8.55
+  commit                 a8255828597a3bd19ac7bb5f657a38d09b a8255828597a3bd19ac7bb5f657a38d09b
+  vendor                 cuda                               cpu   <- differs
+  class                  nvidia                             cpu   <- differs
+  device                 NVIDIA NVIDIA L40S, 595.91.07      Apple M4 / Mac16,12   <- differs
+  cpu                    AMD EPYC 9374F 32-Core Processor   Apple M4   <- differs
+  python                 3.11.10                            3.12.11   <- differs
+  bindings hashed        75                                 42
+  its own verdict        MISMATCH                           MISMATCH
+    nt-nvidia.json: verified 2313 of 5184 cell parts (36 divergent, 0 owed, 0 refused, 2835 n/a); 61 verified, 4 not applicable, 0 owed, 0 held, 3 DIVERGENT, of 68 lanes
+    nt-armcpu.json: verified 2313 of 5184 cell parts (36 divergent, 0 owed, 0 refused, 2835 n/a); 61 verified, 4 not applicable, 0 owed, 0 held, 3 DIVERGENT, of 68 lanes
+
+These documents come from DIFFERENT hardware classes, which is what makes
+this worth doing: agreement here is two independent machines reaching the
+same bits.
+
+COMMITMENTS: none were exchanged. Nothing here shows that either document's
+numbers were COMPUTED by the machine it names. Whichever party received the
+other's file first could have pasted its cell values into a document
+carrying their own provenance, and this command cannot tell that apart from
+two honest runs. This result is WEAKER for the same reason two documents
+from one device are weaker than two vendors.
+To close it, before either party sees the other's file:
+  python -m anonlib verify --commitment mine.json     # publish the line it prints
+then exchange documents and add
+  --commitment-a <nt-nvidia.json's published line> --commitment-b <nt-armcpu.json's>
+
+CHALLENGE: none. Neither document answers a challenge, so nothing here shows
+that either party RAN anything. The reference table ships in the wheel and
+pins the expected hash of every cell, so a well formed document can be
+written straight out of it and committed to without executing a line; a
+commitment settles the ORDER of the two files, never their execution. This
+result is WEAKER for the same reason a comparison without commitments is.
+To close it, after publishing commitments and exchanging the two lines:
+  python -m anonlib verify --challenge mine.json \
+      --challenge-from <your line> <their line>   # publish the second line
+then exchange documents and add
+  --challenge-commitment-a <nt-nvidia.json's second line> --challenge-commitment-b <nt-armcpu.json's>
+
+  agree 2313   differ 0   self-contradicted 0   neither computed 0   agreed on a divergence 36
+  n/a agreed 2835   n/a differing 0   only in nt-nvidia.json: 0   only in nt-armcpu.json: 0
+  incompatible inputs/protocols 0
+
+AGREED, BUT ONE SIDE JUDGED THESE VERY BITS DIVERGENT (36):
+  sequence-adamax/base train: nt-nvidia.json=26cc2c2648fa8bb2  nt-armcpu.json=26cc2c2648fa8bb2
+  sequence-adamax/denormal train: nt-nvidia.json=cc9b4c099a3b901b  nt-armcpu.json=cc9b4c099a3b901b
+  sequence-adamax/denormal_ftz train: nt-nvidia.json=cc9b4c099a3b901b  nt-armcpu.json=cc9b4c099a3b901b
+  sequence-adamax/dupes train: nt-nvidia.json=4c76b72b6f8bf10f  nt-armcpu.json=4c76b72b6f8bf10f
+  sequence-adamax/hashed train: nt-nvidia.json=28543e0f17ff3d2b  nt-armcpu.json=28543e0f17ff3d2b
+  sequence-adamax/negative train: nt-nvidia.json=058d279fe7b357e7  nt-armcpu.json=058d279fe7b357e7
+  sequence-adamax/odd train: nt-nvidia.json=6ca0546c544dfe83  nt-armcpu.json=6ca0546c544dfe83
+  sequence-adamax/ties train: nt-nvidia.json=62fdb4b3ddc92314  nt-armcpu.json=62fdb4b3ddc92314
+  sequence-adamax/wide train: nt-nvidia.json=841ade3b01d8e266  nt-armcpu.json=841ade3b01d8e266
+  sequence-lr-schedulers/base batch: nt-nvidia.json=920e438adb20c152  nt-armcpu.json=920e438adb20c152
+  sequence-lr-schedulers/base train: nt-nvidia.json=fc55dad78a22e94f  nt-armcpu.json=fc55dad78a22e94f
+  sequence-lr-schedulers/denormal batch: nt-nvidia.json=510c3d10f62f9f47  nt-armcpu.json=510c3d10f62f9f47
+  sequence-lr-schedulers/denormal train: nt-nvidia.json=07c3382aaa1faba9  nt-armcpu.json=07c3382aaa1faba9
+  sequence-lr-schedulers/denormal_ftz batch: nt-nvidia.json=510c3d10f62f9f47  nt-armcpu.json=510c3d10f62f9f47
+  sequence-lr-schedulers/denormal_ftz train: nt-nvidia.json=07c3382aaa1faba9  nt-armcpu.json=07c3382aaa1faba9
+  sequence-lr-schedulers/dupes batch: nt-nvidia.json=d966f1af29bf8823  nt-armcpu.json=d966f1af29bf8823
+  sequence-lr-schedulers/dupes train: nt-nvidia.json=25b391cfdfc9af5f  nt-armcpu.json=25b391cfdfc9af5f
+  sequence-lr-schedulers/hashed batch: nt-nvidia.json=194b4f7a832b4378  nt-armcpu.json=194b4f7a832b4378
+  sequence-lr-schedulers/hashed train: nt-nvidia.json=2b63736e9717dc23  nt-armcpu.json=2b63736e9717dc23
+  sequence-lr-schedulers/negative batch: nt-nvidia.json=9d004212c4dfde38  nt-armcpu.json=9d004212c4dfde38
+  sequence-lr-schedulers/negative train: nt-nvidia.json=a66010303c47cbcc  nt-armcpu.json=a66010303c47cbcc
+  sequence-lr-schedulers/odd batch: nt-nvidia.json=bce00bb796aac175  nt-armcpu.json=bce00bb796aac175
+  sequence-lr-schedulers/odd train: nt-nvidia.json=a0c94ebc5ce85daa  nt-armcpu.json=a0c94ebc5ce85daa
+  sequence-lr-schedulers/ties batch: nt-nvidia.json=2c6de3c55b59242b  nt-armcpu.json=2c6de3c55b59242b
+  sequence-lr-schedulers/ties train: nt-nvidia.json=ccdd81c5bf473f41  nt-armcpu.json=ccdd81c5bf473f41
+  sequence-lr-schedulers/wide batch: nt-nvidia.json=83894c55facb1510  nt-armcpu.json=83894c55facb1510
+  sequence-lr-schedulers/wide train: nt-nvidia.json=1a53c5e4f52c3f97  nt-armcpu.json=1a53c5e4f52c3f97
+  sequence-nadam/base train: nt-nvidia.json=c3e6f1be4f0f537f  nt-armcpu.json=c3e6f1be4f0f537f
+  sequence-nadam/denormal train: nt-nvidia.json=39896483b47d0d39  nt-armcpu.json=39896483b47d0d39
+  sequence-nadam/denormal_ftz train: nt-nvidia.json=39896483b47d0d39  nt-armcpu.json=39896483b47d0d39
+  sequence-nadam/dupes train: nt-nvidia.json=26df84d9b7f0ba25  nt-armcpu.json=26df84d9b7f0ba25
+  sequence-nadam/hashed train: nt-nvidia.json=0d3bc1ba048933a7  nt-armcpu.json=0d3bc1ba048933a7
+  sequence-nadam/negative train: nt-nvidia.json=1fe63c2fb565c4be  nt-armcpu.json=1fe63c2fb565c4be
+  sequence-nadam/odd train: nt-nvidia.json=c9dd3323091be485  nt-armcpu.json=c9dd3323091be485
+  sequence-nadam/ties train: nt-nvidia.json=f95ea68b6416370b  nt-armcpu.json=f95ea68b6416370b
+  sequence-nadam/wide train: nt-nvidia.json=88eb161666ddf7e7  nt-armcpu.json=88eb161666ddf7e7
+
+RESULT: AGREED ON A DIVERGENT ANSWER. The two documents match on every
+shared cell, but 36 of them carry a hash that one side judged DIVERGENT
+against its own reference table. Two machines reaching the same wrong answer
+is a finding, not a pass.

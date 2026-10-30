@@ -1,0 +1,23 @@
+{
+  "schema": "paper.byte-lm.continuous-repeat.v1",
+  "status": "QUALIFIED_BOUNDED_CONTINUOUS",
+  "identity_admitted": true,
+  "learning_admitted": true,
+  "resume_admitted": false,
+  "metal_admitted": false,
+  "parameters": 34944,
+  "blocks": 2,
+  "steps": 128,
+  "source_files": 258,
+  "source_commit": "eac39c367beeddb8ba4792551d154673e654ce21",
+  "heldout_loss_initial": 5.5412986278533936,
+  "heldout_loss_final": 2.8436418771743774,
+  "checkpoint_sha256": "a9858cd59b424b77b897d0171d5f225d63f3f161fcdee02049bd6c04cfd8a6dc",
+  "comparison": "bench/results/resume/2026-09-07-root-byte-lm-expanded-comparison/comparison.json",
+  "comparison_sha256": "7178c201023f29639e01dd8e786040e7511edb080b28e0b9299305b2e505cf6d",
+  "devices": {
+    "NVIDIA": "RTX 4090",
+    "AMD": "DigitalOcean MI325X VF"
+  },
+  "scope": "Independent repeated continuous training with expanded transitive Mamba provenance. Original bidirectional resume proof remains separate; no Metal or speed claim."
+}

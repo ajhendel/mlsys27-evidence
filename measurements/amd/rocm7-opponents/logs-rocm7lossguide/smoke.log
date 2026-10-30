@@ -1,0 +1,6 @@
+bench_board: AMD ROCm LightGBM does not import (see /root/anonlib/box-out/v0855-rocm7lossguide/board-smoke/logs/setup.log; libomp shim /root/nb-cache/venv/rocm-libomp); the lightgbm arms will refuse by name
+bench_board: [1/1] trees/gbdt-lossguide/taxi/rows=2000 arms=ours,ours-gain0,xgboost-gpu,lightgbm-cuda
+bench_board:   opponents not stored, not raced (ours-only default; --with-opponents races them): xgboost-gpu, lightgbm-cuda
+bench_board:   done rc=0 52s
+bench_board: board /root/anonlib/box-out/v0855-rocm7lossguide/board-smoke/BOARD.md
+SMOKE PASS 1/1 eligible (0 unsupported, 1 planned)

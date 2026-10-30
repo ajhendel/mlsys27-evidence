@@ -1,0 +1,74 @@
+# python -m anonlib verify --compare
+
+                         all-nvidia.json                    shard5.json
+  version                0.8.55                             0.8.55
+  commit                 a8255828597a3bd19ac7bb5f657a38d09b a8255828597a3bd19ac7bb5f657a38d09b
+  vendor                 cuda                               cpu   <- differs
+  class                  nvidia                             cpu   <- differs
+  device                 NVIDIA NVIDIA L40S, 595.91.07      Linux x86_64 (no vendor tool answe   <- differs
+  cpu                    AMD EPYC 9374F 32-Core Processor   DO-Premium-AMD   <- differs
+  python                 3.11.10                            3.10.12   <- differs
+  bindings hashed        75                                 42
+  its own verdict        VERIFIED                           VERIFIED
+    all-nvidia.json: verified 11510 of 32030 cell parts (0 divergent, 0 owed, 0 refused, 20520 n/a); 394 verified, 55 not applicable, 0 owed, 0 held, of 449 lanes
+    shard5.json: verified 1970 of 5381 cell parts (0 divergent, 0 owed, 0 refused, 3411 n/a); 65 verified, 0 not applicable, 0 owed, 0 held, of 65 lanes
+
+These documents come from DIFFERENT hardware classes, which is what makes
+this worth doing: agreement here is two independent machines reaching the
+same bits.
+
+COMMITMENTS: none were exchanged. Nothing here shows that either document's
+numbers were COMPUTED by the machine it names. Whichever party received the
+other's file first could have pasted its cell values into a document
+carrying their own provenance, and this command cannot tell that apart from
+two honest runs. This result is WEAKER for the same reason two documents
+from one device are weaker than two vendors.
+To close it, before either party sees the other's file:
+  python -m anonlib verify --commitment mine.json     # publish the line it prints
+then exchange documents and add
+  --commitment-a <all-nvidia.json's published line> --commitment-b <shard5.json's>
+
+CHALLENGE: none. Neither document answers a challenge, so nothing here shows
+that either party RAN anything. The reference table ships in the wheel and
+pins the expected hash of every cell, so a well formed document can be
+written straight out of it and committed to without executing a line; a
+commitment settles the ORDER of the two files, never their execution. This
+result is WEAKER for the same reason a comparison without commitments is.
+To close it, after publishing commitments and exchanging the two lines:
+  python -m anonlib verify --challenge mine.json \
+      --challenge-from <your line> <their line>   # publish the second line
+then exchange documents and add
+  --challenge-commitment-a <all-nvidia.json's second line> --challenge-commitment-b <shard5.json's>
+
+  agree 1970   differ 0   self-contradicted 0   neither computed 0   agreed on a divergence 0
+  n/a agreed 3411   n/a differing 0   only in all-nvidia.json: 30537   only in shard5.json: 0
+  incompatible inputs/protocols 0
+
+ONLY IN all-nvidia.json (30537), not comparable:
+  agglomerative/base batch
+  agglomerative/base batchgrad
+  agglomerative/base batchscale
+  agglomerative/base infer
+  agglomerative/base model
+  agglomerative/base ragged
+  agglomerative/base rlpair
+  agglomerative/base stepfull
+  agglomerative/base train
+  agglomerative/denormal batch
+  agglomerative/denormal batchgrad
+  agglomerative/denormal batchscale
+  agglomerative/denormal infer
+  agglomerative/denormal model
+  agglomerative/denormal ragged
+  agglomerative/denormal rlpair
+  agglomerative/denormal stepfull
+  agglomerative/denormal train
+  agglomerative/denormal_ftz batch
+  agglomerative/denormal_ftz batchgrad
+  ... and 30517 more
+
+RESULT: INCOMPLETE. 1970 shared cell parts match; coverage is partial.
+0 cell parts have incompatible inputs or protocols.
+No cell differs, but 30537 cell part(s) appear in only one document, 0
+were computed by neither side, and 0 carry different n/a reasons, so the two
+runs did not cover the same ground.
